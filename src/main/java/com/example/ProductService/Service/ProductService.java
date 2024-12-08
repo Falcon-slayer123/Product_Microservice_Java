@@ -33,7 +33,7 @@ public class ProductService {
 
         List<Product> products=productRepository.findAll();
 
-        products.stream().map(product -> mapToProductResponse(product));
+       return products.stream().map(this::mapToProductResponse).toList();
     }
 
     private ProductResponse mapToProductResponse(Product product) {
@@ -42,6 +42,7 @@ public class ProductService {
                 .id(product.getId())
                 .name(product.getName())
                 .description(product.getDescription())
+                .price(product.getPrice())
                 .build();
     }
 }

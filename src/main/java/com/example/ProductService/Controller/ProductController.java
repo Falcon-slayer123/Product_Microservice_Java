@@ -14,11 +14,14 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/api/product")
-@RequiredArgsConstructor
+//@RequiredArgsConstructor
 @Component
 public class ProductController {
     @Autowired
      private final ProductService productService;
+    public ProductController(ProductService productService) {
+        this.productService = productService;
+    }
 
     @PostMapping
     @ResponseStatus(HttpStatus.CREATED)
@@ -31,6 +34,6 @@ public class ProductController {
     @ResponseStatus(HttpStatus.OK)
     public List<ProductResponse> getAllProducts()
     {
-        productService.getAllProducts();
+       return productService.getAllProducts();
     }
 }
