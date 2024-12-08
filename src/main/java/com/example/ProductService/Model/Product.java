@@ -1,22 +1,31 @@
 package com.example.ProductService.Model;
-import lombok.*;
-import org.springframework.data.annotation.Id;
-import org.springframework.data.mongodb.core.mapping.Document;
 
-@Document(value = "product")
+import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.Id;
+import jakarta.persistence.Table;
+import lombok.*;
+
+@Entity(name = "product")
+@Table(name = "product")
 @AllArgsConstructor
 @NoArgsConstructor
 @Builder
 @Data
 public class Product {
-    public Product(String name, String description, float price) {
-    }
 
-    public String getId() {
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
+    private String name;
+    private String description;
+
+    public Long getId() {
         return id;
     }
 
-    public void setId(String id) {
+    public void setId(Long id) {
         this.id = id;
     }
 
@@ -43,14 +52,15 @@ public class Product {
     public void setPrice(float price) {
         this.price = price;
     }
+    public Product() {
 
-    @Id
-    private String id;
-    private String name;
-    private String description;
+    }
     private float price;
 
-
-
-
+   
+    public Product(String name, String description, float price) {
+        this.name = name;
+        this.description = description;
+        this.price = price;
+    }
 }

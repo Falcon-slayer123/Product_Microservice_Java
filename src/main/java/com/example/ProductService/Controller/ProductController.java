@@ -29,7 +29,7 @@ public class ProductController {
     {
        productService.createProduct(productRequest);
        return ResponseEntity.status(HttpStatus.CREATED)
-            .body("Student created successfully");
+            .body("Order created successfully");
     }
 
     @GetMapping
