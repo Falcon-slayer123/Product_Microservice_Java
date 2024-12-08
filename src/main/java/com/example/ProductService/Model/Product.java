@@ -57,7 +57,7 @@ public class Product {
     }
     private float price;
 
-   
+
     public Product(String name, String description, float price) {
         this.name = name;
         this.description = description;
