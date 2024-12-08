@@ -9,6 +9,9 @@ import org.springframework.data.mongodb.core.mapping.Document;
 @Builder
 @Data
 public class Product {
+    public Product(String name, String description, float price) {
+    }
+
     public String getId() {
         return id;
     }
